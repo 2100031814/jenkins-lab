@@ -16,6 +16,12 @@ pipeline {
         echo 'Hello World from Jenkins Pipeline!'
       }
     }
+    stage('Create Artifact'){
+      steps{
+        sh 'echo "Jenkins Lab Artifact" > build-artifact.txt'
+        archiveArtifacts artifacts: 'build-artifact.txt', fingerprint: true
+  }
+    }
   }
   post {
     success {
